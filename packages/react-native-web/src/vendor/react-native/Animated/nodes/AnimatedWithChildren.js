@@ -38,6 +38,11 @@ class AnimatedWithChildren extends AnimatedNode {
   }
 
   __addChild(child: AnimatedNode): void {
+    // Prevent adding duplicate animated nodes.
+    if (this._children.includes(child)) {
+      return;
+    }
+
     if (this._children.length === 0) {
       this.__attach();
     }
