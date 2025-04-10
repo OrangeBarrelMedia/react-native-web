@@ -122,7 +122,7 @@ class TimingAnimation extends Animation {
         this._onUpdate(this._toValue);
         this.__debouncedOnEnd({finished: true});
       } else {
-        this._startTime = Date.now();
+        this._startTime = performance.now();
         if (this._useNativeDriver) {
           this.__startNativeAnimation(animatedValue);
         } else {
@@ -141,7 +141,7 @@ class TimingAnimation extends Animation {
   }
 
   onUpdate(): void {
-    const now = Date.now();
+    const now = performance.now();
     if (now >= this._startTime + this._duration) {
       if (this._duration === 0) {
         this._onUpdate(this._toValue);

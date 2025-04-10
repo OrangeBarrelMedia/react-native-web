@@ -80,7 +80,7 @@ class DecayAnimation extends Animation {
     this._fromValue = fromValue;
     this._onUpdate = onUpdate;
     this.__onEnd = onEnd;
-    this._startTime = Date.now();
+    this._startTime = performance.now();
     if (this._useNativeDriver) {
       this.__startNativeAnimation(animatedValue);
     } else {
@@ -89,7 +89,7 @@ class DecayAnimation extends Animation {
   }
 
   onUpdate(): void {
-    const now = Date.now();
+    const now = performance.now();
 
     const value =
       this._fromValue +

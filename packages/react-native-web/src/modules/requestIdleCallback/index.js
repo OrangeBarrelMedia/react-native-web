@@ -10,11 +10,11 @@ import canUseDOM from '../canUseDom';
 
 const _requestIdleCallback = function (cb: Function, options?: Object) {
   return setTimeout(() => {
-    const start = Date.now();
+    const start = performance.now();
     cb({
       didTimeout: false,
       timeRemaining() {
-        return Math.max(0, 50 - (Date.now() - start));
+        return Math.max(0, 50 - (performance.now() - start));
       }
     });
   }, 1);

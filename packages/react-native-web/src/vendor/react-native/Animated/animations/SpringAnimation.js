@@ -212,7 +212,7 @@ class SpringAnimation extends Animation {
 
     this._onUpdate = onUpdate;
     this.__onEnd = onEnd;
-    this._lastTime = Date.now();
+    this._lastTime = performance.now();
     this._frameTime = 0.0;
 
     if (previousAnimation instanceof SpringAnimation) {
@@ -275,7 +275,7 @@ class SpringAnimation extends Animation {
     // computation and will continue on the next frame. It's better to have it
     // running at faster speed than jumping to the end.
     const MAX_STEPS = 64;
-    let now = Date.now();
+    let now = performance.now();
     if (now > this._lastTime + MAX_STEPS) {
       now = this._lastTime + MAX_STEPS;
     }
